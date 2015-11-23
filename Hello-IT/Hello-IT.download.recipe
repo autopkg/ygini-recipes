@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads Hello IT.
+
+The GitHubReleasesInfoProvider processor used by this recipe also
+respects an input variable: 'sort_by_highest_tag_names', which
+if set, will ignore the post dates of the releases and instead sort
+descending by tag names according to LooseVersion semantics.</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.download.Hello-IT</string>
+    <key>Input</key>
+    <dict>
+        <key>INCLUDE_PRERELEASES</key>
+        <string></string>
+        <key>NAME</key>
+        <string>Hello-IT</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.4</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>GitHubReleasesInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>asset_regex</key>
+                <string>^Hello.IT.app.zip$</string>
+                <key>github_repo</key>
+                <string>ygini/Hello-IT</string>
+                <key>include_prereleases</key>
+                <string>%INCLUDE_PRERELEASES%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+            <key>Arguments</key>
+            <dict>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>

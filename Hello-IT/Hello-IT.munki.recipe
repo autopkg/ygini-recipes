@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Import Hello IT into munki.</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.munki.Hello-IT</string>
+    <key>Input</key>
+    <dict>
+        <key>MUNKI_CATALOG</key>
+        <string>development</string>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps</string>
+        <key>HELLO_IT_NAME</key>
+        <string>hello-it</string>
+        <key>HELLO_IT_DISPLAYNAME</key>
+        <string>Hello-IT</string>
+        <key>HELLO_IT_DESCRIPTION</key>
+        <string>Self support apps provided by IT services.</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.4</string>
+    <key>ParentRecipe</key>
+    <string>com.github.ygini.download.Hello-IT</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>DmgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>dmg_megabytes</key>
+                <string>10</string>
+                <key>dmg_root</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>dmg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%dmg_path%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+                <key>pkginfo</key>
+                <dict>
+                    <key>catalogs</key>
+                    <array>
+                        <string>%MUNKI_CATALOG%</string>
+                    </array>
+                    <key>description</key>
+                    <string>%HELLO_IT_DESCRIPTION%</string>
+                    <key>display_name</key>
+                    <string>%HELLO_IT_DISPLAYNAME%</string>
+                    <key>minimum_os_version</key>
+                    <string>10.8.0</string>
+                    <key>name</key>
+                    <string>%HELLO_IT_NAME%</string>
+                    <key>unattended_install</key>
+                    <true/>
+                </dict>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
