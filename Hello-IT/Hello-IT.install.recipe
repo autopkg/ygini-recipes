@@ -5,32 +5,13 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v1.0 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Hello-IT and imports it into Munki.</string>
+	<string>Installs the latest version of Hello-IT.</string>
 	<key>Identifier</key>
-	<string>com.github.ygini.munki.HelloIT</string>
+	<string>com.github.ygini.install.HelloIT</string>
 	<key>Input</key>
 	<dict>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>Hello-IT</string>
-		<key>pkginfo</key>
-		<dict>
-			<key>catalogs</key>
-			<array>
-				<string>testing</string>
-			</array>
-			<key>description</key>
-			<string>Self support apps provided by IT services to end users.</string>
-			<key>developer</key>
-			<string>Yoann GINI</string>
-			<key>display_name</key>
-			<string>Hello-IT</string>
-			<key>name</key>
-			<string>%NAME%</string>
-			<key>unattended_install</key>
-			<true/>
-		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
@@ -52,13 +33,20 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>pkg_path</key>
+				<key>dmg_path</key>
 				<string>%dmg_path%</string>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>items_to_copy</key>
+				<array>
+					<dict>
+						<key>destination_path</key>
+						<string>/Applications</string>
+						<key>source_item</key>
+						<string>%NAME%.app</string>
+					</dict>
+				</array>
 			</dict>
 			<key>Processor</key>
-			<string>MunkiImporter</string>
+			<string>InstallFromDMG</string>
 		</dict>
 	</array>
 </dict>
