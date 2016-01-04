@@ -13,7 +13,7 @@
 		<key>BUNDLE_ID</key>
 		<string>com.github.ygini.Hello-IT</string>
 		<key>NAME</key>
-		<string>Hello-IT</string>
+		<string>Hello IT</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
