@@ -32,7 +32,7 @@ when importing a delta update. Choosing to import delta updates will likely
 require additional work on the part of the admin (for example, using an
 installcheck_script).</string>
     <key>Identifier</key>
-	<string>com.github.autopkg.ygini-recipes.munki.MSPowerPoint2016Updates-fr_FR</string>
+	<string>com.github.ygini.munki.MSPowerPoint2016Updates-fr_FR</string>
     <key>MinimumVersion</key>
     <string>0.4.2</string>
     <key>Input</key>
