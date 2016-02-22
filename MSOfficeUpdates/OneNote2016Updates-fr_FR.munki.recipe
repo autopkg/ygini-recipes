@@ -40,7 +40,7 @@ installcheck_script).</string>
         <key>NAME</key>
         <string>OneNote2016_update_fr</string>
         <key>LOCALE_ID</key>
-        <string>040C</string>
+        <string>1036</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>office/2016/updates</string>
         <key>munki_required_update_name</key>
