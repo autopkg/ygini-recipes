@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Download recipe for LifeSize video app installed on premise. You need to specify the targer server with LIFE_SIZE_SERVER settings</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.download.LifeSizeOnPremise</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>LifeSizeOnPremise</string>
+		<key>LIFE_SIZE_SERVER</key>                                                        
+        <string>10.0.2.1</string>
+		<key>LIFE_SIZE_SERVER_PROTOCOL</key>                                                        
+        <string>http</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.3.1</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%LIFE_SIZE_SERVER_PROTOCOL%://%LIFE_SIZE_SERVER%/download/</string>
+                <key>re_pattern</key>
+                <string>(?P&lt;url_subpath&gt;/CSC/download/mac/.*?/LifeSize.*?.pkg)</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>http://%LIFE_SIZE_SERVER%%url_subpath%</string>
+                <key>filename</key>
+                <string>%NAME%.pkg</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
