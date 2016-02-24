@@ -30,6 +30,10 @@
             <string>LifeSize</string>
             <key>category</key>
             <string>Collaboration</string>
+			<key>description</key>
+			<string>Pull up a seat at the meeting with easy-to-use, feature-rich video conferencing you can use on any device.</string>
+			<key>display_name</key>
+			<string>Lifesize Video</string>
         </dict>
     </dict>
     <key>ParentRecipe</key>
