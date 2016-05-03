@@ -22,31 +22,11 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>dmg_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
-				<key>dmg_root</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications</string>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
 			</dict>
 			<key>Processor</key>
-			<string>DmgCreator</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>dmg_path</key>
-				<string>%dmg_path%</string>
-				<key>items_to_copy</key>
-				<array>
-					<dict>
-						<key>destination_path</key>
-						<string>/Applications</string>
-						<key>source_item</key>
-						<string>%NAME%.app</string>
-					</dict>
-				</array>
-			</dict>
-			<key>Processor</key>
-			<string>InstallFromDMG</string>
+			<string>Installer</string>
 		</dict>
 	</array>
 </dict>
