@@ -34,7 +34,10 @@ class GitCommitAndPush(Processor):
         com.github.autopkg domain and push it.
         User running the process must have capabilities to push without user interaction."""
     description = __doc__
-
+    input_variables = {
+    }
+    output_variables = {
+    }
     def main(self):
         repo_path = CFPreferencesCopyAppValue(
             "MUNKI_REPO",
