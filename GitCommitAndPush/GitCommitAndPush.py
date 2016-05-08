@@ -43,7 +43,8 @@ class GitCommitAndPush(Processor):
             "MUNKI_REPO",
             "com.github.autopkg")
         if repo_path:
-            call(['git', 'commit', '-m', 'Automatic commit after AutoPKG run'], cwd=repo_path)
+            call(['git', 'add', './*', 'Automatic commit after AutoPKG run'], cwd=repo_path)
+            call(['git', 'commit', ,'-a', '-m', 'Automatic commit after AutoPKG run'], cwd=repo_path)
             call(['git', 'push'], cwd=repo_path)
         else:
             self.output("No munki repo set, nothing pushed")
