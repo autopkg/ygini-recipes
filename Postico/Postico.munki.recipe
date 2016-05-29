@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Load Postico into munki</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.munki.Postico</string>
+    <key>MinimumVersion</key>
+    <string>0.4.2</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Postico</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/Postico</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+            <key>developer</key>
+            <string>Egger Apps</string>
+            <key>category</key>
+            <string>Developer</string>
+			<key>description</key>
+			<string>Postico will look familiar to anyone who has used a Mac before. Just connect to a database and begin working with tables and views. Start with the basics and learn about advanced features of PostgreSQL as you go along.</string>
+			<key>display_name</key>
+			<string>Postico</string>
+        </dict>
+    </dict>
+    <key>ParentRecipe</key>
+    <string>com.github.ygini.download.Postico</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>
