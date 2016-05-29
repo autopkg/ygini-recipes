@@ -28,6 +28,10 @@
         </dict>
         <dict>
             <key>Processor</key>
+            <string>Unarchiver</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
             <string>EndOfCheckPhase</string>
         </dict>
     </array>
