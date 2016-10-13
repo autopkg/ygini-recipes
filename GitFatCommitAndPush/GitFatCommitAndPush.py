@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""See docstring for GitCommitAndPush class"""
+"""See docstring for GitFatCommitAndPush class"""
 
 from autopkglib import Processor
 from subprocess import call
@@ -26,10 +26,10 @@ except:
     print "WARNING: Failed 'from Foundation import CFPreferencesCopyAppValue' in " + __name__
 #pylint: enable=no-name-in-module
 
-__all__ = ["GitCommitAndPush"]
+__all__ = ["GitFatCommitAndPush"]
 
 
-class GitCommitAndPush(Processor):
+class GitFatCommitAndPush(Processor):
     """Commit the change on the git repo disignated via the MUNKI_REPO key from
         com.github.autopkg domain and push it.
         User running the process must have capabilities to push without user interaction."""
@@ -51,5 +51,5 @@ class GitCommitAndPush(Processor):
             self.output("No munki repo set, nothing pushed")
 
 if __name__ == "__main__":
-    PROCESSOR = GitCommitAndPush()
+    PROCESSOR = GitFatCommitAndPush()
     PROCESSOR.execute_shell()
