@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Start the script reference by POST_RUN_SYNC_SCRIPT variable.</string>
     <key>Identifier</key>
-    <string>com.github.ygini.munki.RunSyncCommand</string>
+    <string>com.github.ygini.script.RunSyncCommand</string>
     <key>Input</key>
     <dict>
         <key>POST_RUN_SYNC_SCRIPT</key>
