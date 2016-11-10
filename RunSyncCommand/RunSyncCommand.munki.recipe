@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Start the script reference by POST_RUN_SYNC_SCRIPT variable.</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.munki.RunSyncCommand</string>
+    <key>Input</key>
+    <dict>
+        <key>POST_RUN_SYNC_SCRIPT</key>
+        <string>/usr/bin/true</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>RunSyncCommand</string>
+        </dict>
+    </array>
+</dict>
+</plist>
