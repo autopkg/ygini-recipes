@@ -30,7 +30,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.krispayne.pkg.Postico</string>
+	<string>com.github.ygini.pkg.Postico</string>
 	<key>Process</key>
 	<array>
 		<dict>
