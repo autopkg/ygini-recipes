@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Postico and creates a package.</string>
 	<key>Identifier</key>
-	<string>com.github.krispayne.pkg.Postico</string>
+	<string>com.github.ygini.pkg.Postico</string>
 	<key>Input</key>
 	<dict>
 		<key>BUNDLE_ID</key>
@@ -18,7 +18,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.krispayne.download.Postico</string>
+	<string>com.github.ygini.download.Postico</string>
 	<key>Process</key>
 	<array>
 		<dict>
