@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of SketchUpMake and imports into Munki.</string>
+    <string>Downloads the current release version of SketchUpMake and imports into Munki with the language code included in the item name (so you can import multiple language in the same repo, you just have to run this recipe with different settings).</string>
     <key>Identifier</key>
     <string>com.github.ygini.munki.SketchUpMake</string>
     <key>Input</key>
@@ -25,7 +25,7 @@
             <key>display_name</key>
             <string>%NAME% %LANG%</string>
             <key>name</key>
-            <string>%NAME%</string>
+            <string>%NAME%-%LANG%</string>
             <key>unattended_install</key>
             <true/>
         </dict>

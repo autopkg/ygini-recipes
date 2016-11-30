@@ -42,7 +42,7 @@
             <key>Arguments</key>
             <dict>
                 <key>info_path</key>
-                <string>%pathname%/SketchUp 2016/SketchUp.app</string>
+                <string>%pathname%/SketchUp 2017/SketchUp.app</string>
                 <key>plist_keys</key>
                 <dict>
                     <key>CFBundleShortVersionString</key>
@@ -60,9 +60,9 @@
             <key>Arguments</key>
             <dict>
                 <key>source_path</key>
-                <string>%pathname%/SketchUp 2016/%app_name%.app</string>
+                <string>%pathname%/SketchUp 2017</string>
                 <key>destination_path</key>
-                <string>%pkgroot%/Applications/%app_name%.app</string>
+                <string>%pkgroot%/Applications/SketchUp 2017</string>
             </dict>
         </dict>
         <dict>
@@ -71,7 +71,7 @@
             <key>Arguments</key>
             <dict>
                 <key>pkgname</key>
-                <string>%NAME%-%version%</string>
+                <string>%NAME%-%LANG%-%version%</string>
                 <key>pkg_request</key>
                 <dict>
                     <key>pkgdir</key>
