@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the current release version of SketchUpMake and imports into Munki with the language code included in the item name (so you can import multiple language in the same repo, you just have to run this recipe with different settings).</string>
     <key>Identifier</key>
-    <string>com.github.ygini.munki-intl.SketchUpMake</string>
+    <string>com.github.ygini.munki.SketchUpMake-intl</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
