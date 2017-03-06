@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Elasticsearch.</string>
+	<key>Identifier</key>
+	<string>com.github.ygini.download.Elasticsearch</string>
+	<key>Input</key>
+	<dict>
+		<key>SOURCE_URL</key>
+		<string>https://www.elastic.co/downloads/elasticsearch</string>
+        <key>SEARCH_PATTERN</key>
+        <string>https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-(?P&lt;version&gt;.*?).tar.gz</string>
+        <key>DOWNLOAD_BASE_URL</key>
+        <string>https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-</string>
+        <key>DOWNLOAD_SUFFIX</key>
+        <string>.tar.gz</string>
+		<key>NAME</key>
+		<string>Elasticsearch</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>Process</key>
+	<array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%SOURCE_URL%</string>
+                <key>re_pattern</key>
+                <string>%SEARCH_PATTERN%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>filename</key>
+                <string>%NAME%.tar.gz</string>
+                <key>url</key>
+                <string>%DOWNLOAD_BASE_URL%%version%%DOWNLOAD_SUFFIX%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,37 @@
+#!/bin/sh
+
+if [ -f /Library/LaunchDaemons/com.github.ygini.Elasticsearch.plist ]
+then
+    echo "Unloading current elasticsearch version from launchd"
+    launchctl unload /Library/LaunchDaemons/com.github.ygini.Elasticsearch.plist
+fi
+
+if [ -e /usr/local/elasticsearch ]
+then
+    echo "Removing current elasticsearch symlink version, keeping files"
+    rm /usr/local/elasticsearch
+fi
+
+echo "Moving new elasticsearch version into produciton"
+mv /usr/local/elasticsearch.new /usr/local/elasticsearch
+
+if [ ! -f /Library/Elasticsearch/Config/elasticsearch.yml ]
+then
+    echo "Loading default elasticsearch config"
+    cp /usr/local/elasticsearch/config/elasticsearch.yml /Library/Elasticsearch/Config/
+    cp /usr/local/elasticsearch/config/jvm.options /Library/Elasticsearch/Config/
+    cp /usr/local/elasticsearch/config/log4j2.properties /Library/Elasticsearch/Config/
+    
+    chown _www:admin /Library/Elasticsearch/Config/elasticsearch.yml
+    chown _www:admin /Library/Elasticsearch/Config/jvm.options
+    chown _www:admin /Library/Elasticsearch/Config/log4j2.properties
+
+    echo "path.data: /Library/Elasticsearch/Data" >> /Library/Elasticsearch/Config/elasticsearch.yml
+else
+    echo "Keeping existing elasticsearch config"
+fi
+
+echo "Loading elasticsearch into launchd"
+launchctl load /Library/LaunchDaemons/com.github.ygini.Elasticsearch.plist
+
+exit $?
