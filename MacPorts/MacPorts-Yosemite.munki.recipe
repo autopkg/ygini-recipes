@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Import MacPorts in Munki</string>
+	<key>Identifier</key>
+	<string>com.github.ygini.munki.macports-yosemite</string>
+	<key>Input</key>
+	<dict>
+		<key>MACPORTS_REQUESTED_OS</key>
+		<string>10.10-Yosemite</string>
+		<key>MAX_OS_VER</key>
+		<string>10.10.99</string>
+		<key>MIN_OS_VER</key>
+		<string>10.10.0</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.ygini.munki.macports-abstract</string>
+	<key>ParentRecipeTrustInfo</key>
+	<dict>
+		<key>non_core_processors</key>
+		<dict/>
+		<key>parent_recipes</key>
+		<dict>
+			<key>com.github.hansen-m.download.MacPorts</key>
+			<dict>
+				<key>git_hash</key>
+				<string>d0dfbabe75fadd3a8b65ff5d35a13e712aa7e403</string>
+				<key>path</key>
+				<string>/Users/ygi/Library/AutoPkg/RecipeRepos/com.github.autopkg.hansen-m-recipes/MacPorts/MacPorts.download.recipe</string>
+				<key>sha256_hash</key>
+				<string>1832119deda0f945c6bf25c9a82576b51b0303238e6e1bf46757a676f7de9821</string>
+			</dict>
+			<key>com.github.ygini.munki.macports-abstract</key>
+			<dict>
+				<key>path</key>
+				<string>/Users/ygi/SVN/Public/ygini-recipes/MacPorts/MacPorts-abstract.munki.recipe</string>
+				<key>sha256_hash</key>
+				<string>90e85635e81e5a914120e54bc1680fc2dc8004dbd9725187a0c2f35434a1bcfd</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
