@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Import PHPComposerURLProvider in Munki</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.munki.PHPComposerURLProvider</string>
+    <key>MinimumVersion</key>
+    <string>0.5.0</string>
+    <key>Input</key>
+    <dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>dev/phpcomposer</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <false/>
+            <key>developer</key>
+            <string>Nils Adermann, Jordi Boggiano and many community contributions</string>
+            <key>category</key>
+            <string>Developer</string>
+			<key>description</key>
+			<string>Composer is a tool for dependency management in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.</string>
+			<key>display_name</key>
+			<string>PHP Composer</string>
+        </dict>
+    </dict>
+    <key>ParentRecipe</key>
+    <string>com.github.ygini.pkg.PHPComposerURLProvider</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pkg_path%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>
