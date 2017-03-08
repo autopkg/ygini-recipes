@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Import PHPComposerURLProvider in Munki</string>
+    <string>Import PHPComposer in Munki</string>
     <key>Identifier</key>
-    <string>com.github.ygini.munki.PHPComposerURLProvider</string>
+    <string>com.github.ygini.munki.PHPComposer</string>
     <key>MinimumVersion</key>
     <string>0.5.0</string>
     <key>Input</key>
@@ -33,7 +33,7 @@
         </dict>
     </dict>
     <key>ParentRecipe</key>
-    <string>com.github.ygini.pkg.PHPComposerURLProvider</string>
+    <string>com.github.ygini.pkg.PHPComposer</string>
     <key>Process</key>
     <array>
         <dict>
