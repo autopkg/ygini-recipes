@@ -40,15 +40,21 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_plist_path</key>
-				<string>%pathname%/%NAME%.app/Contents/Info.plist</string>
-				<key>plist_version_key</key>
-				<string>CFBundleShortVersionString</string>
+				<key>url</key>
+				<string>http://updates.elgato.com/autoupdate/videoCapture.rss</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
+				<key>re_pattern</key>
+				<string>Elgato Video Capture (\d\.\d\.\d)</string>
+				<key>re_flags</key>
+				<array>
+					<string>IGNORECASE</string>
+				</array>
 			</dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 		</dict>
 	</array>
 </dict>
