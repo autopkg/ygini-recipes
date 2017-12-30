@@ -16,21 +16,10 @@
     <key>Process</key>
     <array>
         <dict>
-            <key>Processor</key>
-            <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://www.counterpath.com/x-lite-download/</string>
-                <key>re_pattern</key>      
-                <string>http://counterpath\.s3\.amazonaws\.com/downloads/X-Lite_(?P&lt;url_version_number&gt;.*?)\.dmg</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>http://counterpath.s3.amazonaws.com/downloads/X-Lite_%url_version_number%.dmg</string>
+                <string>http://www.counterpath.com/XLiteForMac</string>
                 <key>filename</key>
                 <string>%NAME%.dmg</string>
             </dict>
