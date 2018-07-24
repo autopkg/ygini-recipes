@@ -27,20 +27,33 @@ class MunkiNormalizePath(Processor):
     Typically this would be run as a preprocessor."""
     input_variables = {
         "MUNKI_REPO_SUBDIR": {
-            "required": True,
+            "required": False,
+            "description": "The target munki subdirectory",
+        },
+        "repo_subdirectory": {
+            "required": False,
             "description": "The target munki subdirectory",
         },
         "NAME": {
-            "required": True,
+            "required": False,
             "description": "The target package name",
         }
     }
     output_variables = {
         "MUNKI_REPO_SUBDIR": {
-            "description": "The updated target munki subdirectory",
+            "description": "The updated target munki subdirectory if exist",
+        },
+        "repo_subdirectory": {
+            "description": "The updated target munki subdirectory if exist",
         },
         "NAME": {
             "description": "The updated target package name",
+        },
+        "DISPLAYNAME": {
+            "description": "The former NAME if this variable does not exist yet",
+        },
+        "display_name": {
+            "description": "The former NAME if this variable and DISPLAYNAME does not exist yet",
         }
     }
     description = __doc__
@@ -48,16 +61,28 @@ class MunkiNormalizePath(Processor):
     def main(self):
         if "pkginfo" not in self.env:
             self.env["pkginfo"] = {}
-        original_name = self.env["NAME"]
-        original_subdir = self.env["MUNKI_REPO_SUBDIR"]
+        original_name = self.env["NAME"] if "NAME" in self.env else None
+        original_displayname = self.env["DISPLAYNAME"] if "DISPLAYNAME" in self.env else None
+        original_displayname_munki = self.env["pkginfo"]["display_name"] if "display_name" in self.env["pkginfo"] else None
+        original_subdir = self.env["MUNKI_REPO_SUBDIR"] if "MUNKI_REPO_SUBDIR" in self.env else None
+        original_subdir_munki = self.env["repo_subdirectory"] if "repo_subdirectory" in self.env else None
         if original_name:
             self.env["NAME"] = re.sub('[^0-9a-zA-Z/]+', '_', original_name.lower())
-            self.output("Updated NAME with %s"
-                        % self.env["NAME"])
+            self.output("Updated NAME with %s" % self.env["NAME"])
+            if original_displayname is None:
+                self.output("No original DISPLAYNAME, adding one")
+                self.env["DISPLAYNAME"] = original_name
+                self.output("Updated DISPLAYNAME with %s" % original_name)
+                if original_displayname_munki is None:
+                    self.output("No original display_name in pkginfo, adding one")
+                    self.env["pkginfo"]["display_name"] = original_name
+                    self.output("Updated display_name with %s" % original_name)
         if original_subdir:
             self.env["MUNKI_REPO_SUBDIR"] = re.sub('[^0-9a-zA-Z/]+', '_', original_subdir.lower())
-            self.output("Updated MUNKI_REPO_SUBDIR with %s"
-                        % self.env["MUNKI_REPO_SUBDIR"])
+            self.output("Updated MUNKI_REPO_SUBDIR with %s" % self.env["MUNKI_REPO_SUBDIR"])
+        if original_subdir_munki:
+            self.env["repo_subdirectory"] = re.sub('[^0-9a-zA-Z/]+', '_', original_subdir_munki.lower())
+            self.output("Updated repo_subdirectory with %s" % self.env["repo_subdirectory"])
 
 if __name__ == "__main__":
     PROCESSOR = MunkiNormalizePath()
