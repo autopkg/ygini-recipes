@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Download RV64 by Tweak Software. Using this recipe imply the acceptation of the Autodesk Software License And Services Agreement http://www.tweaksoftware.com/downloads/tweak-software-license-agreement-standard-terms</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.download.RV64</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>rv64</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.3.1</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>http://www.tweaksoftware.com/downloads/tweak-software-license-terms-and-conditions?acceptance=I%20Agree&amp;fieldset=default&amp;form.submitted=1</string>
+                <key>re_pattern</key>
+                <string>rv-mac-Intel_64-(?P&lt;url_version_number&gt;.*?).dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>http://www.tweaksoftware.com/static/downloads/rv-mac-Intel_64-%url_version_number%.dmg</string>
+                <key>filename</key>
+                <string>%NAME%.dmg</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
