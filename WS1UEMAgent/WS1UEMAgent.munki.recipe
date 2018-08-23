@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Download Workspace ONE UEM Agent by VMware and publish it into Munki</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.munki.ws1uemagent</string>
+    <key>MinimumVersion</key>
+    <string>0.4.2</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>WS1UEMAgent</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>it</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+            <key>developer</key>
+            <string>VMware</string>
+            <key>category</key>
+            <string>IT Management</string>
+			<key>description</key>
+			<string>From the Workspace ONE UEM Agent, you can view device details, read messages from IT, verify your compliance status and request support from your IT administrator. The Workspace ONE UEM Agent will report device details and compliance status to the admin console. </string>
+			<key>display_name</key>
+			<string>Workspace ONE UEM Agent</string>
+        </dict>
+    </dict>
+    <key>ParentRecipe</key>
+    <string>com.github.ygini.download.ws1uemagent</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>
