@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Download Terminus and publish it into Munki</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.munki.terminus</string>
+    <key>MinimumVersion</key>
+    <string>0.4.2</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>terminus</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>it</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+            <key>developer</key>
+            <string>Crystalnix</string>
+            <key>category</key>
+            <string>IT Management</string>
+			<key>description</key>
+			<string>Termius is a portable server management system that works for you in any situation.</string>
+			<key>display_name</key>
+			<string>Terminus</string>
+        </dict>
+    </dict>
+    <key>ParentRecipe</key>
+    <string>com.github.ygini.download.terminus</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>
