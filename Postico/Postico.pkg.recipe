@@ -24,33 +24,13 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>pkg_request</key>
-				<dict>
-					<key>chown</key>
-					<array>
-						<dict>
-							<key>group</key>
-							<string>admin</string>
-							<key>path</key>
-							<string>Applications</string>
-							<key>user</key>
-							<string>root</string>
-						</dict>
-					</array>
-					<key>id</key>
-					<string>%BUNDLE_ID%</string>
-					<key>options</key>
-					<string>purge_ds_store</string>
-					<key>pkgname</key>
-					<string>%NAME%-%version%</string>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/%NAME%</string>
-					<key>version</key>
-					<string>%version%</string>
-				</dict>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>app_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/*.app</string>
 			</dict>
 			<key>Processor</key>
-			<string>PkgCreator</string>
+			<string>AppPkgCreator</string>
 		</dict>
 	</array>
 </dict>
