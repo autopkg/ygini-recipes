@@ -6,13 +6,13 @@
     <string>Create a Molotov.tv package</string>
     <key>Identifier</key>
     <string>com.github.ygini.pkg.Molotov</string>
-    <key>MinimumVersion</key>
-    <string>0.4.2</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>Molotov</string>
     </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
     <key>ParentRecipe</key>
     <string>com.github.ygini.download.Molotov</string>
     <key>Process</key>
