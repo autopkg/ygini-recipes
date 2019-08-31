@@ -15,6 +15,7 @@
 # limitations under the License.
 """See docstring for MunkiNormalizePath class"""
 
+from __future__ import absolute_import
 from autopkglib import Processor
 import re 
 

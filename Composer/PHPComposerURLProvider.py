@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+from __future__ import absolute_import
 from HTMLParser import HTMLParser
 import re
 import urllib2
@@ -70,7 +71,7 @@ class PHPComposerURLProvider(Processor):
                     version = m.group(1)
                     download_urls[version] = url
 
-        except urllib2.HTTPError, ValueError:
+        except urllib2.HTTPError as ValueError:
             raise ProcessorError("Could not parse downloads metadata.")
         return download_urls
 

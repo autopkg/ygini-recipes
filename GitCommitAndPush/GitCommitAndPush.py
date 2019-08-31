@@ -16,6 +16,8 @@
 
 """See docstring for GitCommitAndPush class"""
 
+from __future__ import absolute_import
+from __future__ import print_function
 from autopkglib import Processor
 from subprocess import call
 
@@ -23,7 +25,7 @@ from subprocess import call
 try:
     from Foundation import CFPreferencesCopyAppValue
 except:
-    print "WARNING: Failed 'from Foundation import CFPreferencesCopyAppValue' in " + __name__
+    print("WARNING: Failed 'from Foundation import CFPreferencesCopyAppValue' in " + __name__)
 #pylint: enable=no-name-in-module
 
 __all__ = ["GitCommitAndPush"]
