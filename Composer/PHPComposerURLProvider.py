@@ -56,7 +56,7 @@ class PHPComposerURLProvider(Processor):
     }
 
 
-    def get_all_downlaod_URLs_per_version(self):
+    def get_all_download_URLs_per_version(self):
         '''Return a list of download URLs.'''
         try:
             html_content = urllib2.urlopen(self.source_url).read()
@@ -97,10 +97,10 @@ class PHPComposerURLProvider(Processor):
         	self.url_pattern = self.env['url_pattern']
 
         try:
-            all_downlaod_URLs_per_version = self.get_all_downlaod_URLs_per_version()
+            all_download_URLs_per_version = self.get_all_download_URLs_per_version()
 
-            last_version = self.get_highest_version(all_downlaod_URLs_per_version)
-            last_version_url = all_downlaod_URLs_per_version[last_version]
+            last_version = self.get_highest_version(all_download_URLs_per_version)
+            last_version_url = all_download_URLs_per_version[last_version]
         except Exception as e:
             raise ProcessorError("Could not get a download URL: %s" % e)
 
