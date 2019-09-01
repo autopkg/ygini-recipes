@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
 from __future__ import absolute_import
-from HTMLParser import HTMLParser
+
 import re
 import urllib2
 import urlparse
-
-from distutils.version import LooseVersion, StrictVersion
+from distutils.version import LooseVersion
+from HTMLParser import HTMLParser
 
 from autopkglib import Processor, ProcessorError
 
