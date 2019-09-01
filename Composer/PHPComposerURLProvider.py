@@ -3,12 +3,16 @@
 from __future__ import absolute_import
 
 import re
-import urllib2
 import urlparse
 from distutils.version import LooseVersion
 from HTMLParser import HTMLParser
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["PHPComposerURLProvider"]
 
@@ -59,7 +63,7 @@ class PHPComposerURLProvider(Processor):
     def get_all_download_URLs_per_version(self):
         '''Return a list of download URLs.'''
         try:
-            html_content = urllib2.urlopen(self.source_url).read()
+            html_content = urlopen(self.source_url).read()
             parser = ComposerURLFinder()
             parser.feed(html_content)
             url_pattern = re.compile(self.url_pattern )
@@ -71,7 +75,7 @@ class PHPComposerURLProvider(Processor):
                     version = m.group(1)
                     download_urls[version] = url
 
-        except urllib2.HTTPError as ValueError:
+        except:
             raise ProcessorError("Could not parse downloads metadata.")
         return download_urls
 
