@@ -22,7 +22,7 @@ class ComposerURLFinder(HTMLParser):
                # If href is defined, print it.
                if name == "href":
                    self.urls.append(value)
-                   
+
 class PHPComposerURLProvider(Processor):
     """Provides a version and dmg download for Composer command line tool."""
     description = __doc__
@@ -86,20 +86,20 @@ class PHPComposerURLProvider(Processor):
                     has_changed = True
                     selected_version = a_version
         return selected_version
-        
+
     def main(self):
         '''Find the last version number and URL'''
-            
+
         if 'source_url' in self.env:
         	self.source_url = self.env['source_url']
-        	
+
         if 'url_pattern' in self.env:
         	self.url_pattern = self.env['url_pattern']
 
         try:
             all_downlaod_URLs_per_version = self.get_all_downlaod_URLs_per_version()
-        
-            last_version = self.get_highest_version(all_downlaod_URLs_per_version.keys())
+
+            last_version = self.get_highest_version(all_downlaod_URLs_per_version)
             last_version_url = all_downlaod_URLs_per_version[last_version]
         except Exception as e:
             raise ProcessorError("Could not get a download URL: %s" % e)
