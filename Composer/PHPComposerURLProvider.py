@@ -18,10 +18,10 @@ class ComposerURLFinder(HTMLParser):
         # Only parse the 'anchor' tag.
         if tag == "a":
            # Check the list of defined attributes.
-           for name, value in attrs:
-               # If href is defined, print it.
-               if name == "href":
-                   self.urls.append(value)
+            for name, value in attrs:
+                # If href is defined, print it.
+                if name == "href":
+                    self.urls.append(value)
 
 class PHPComposerURLProvider(Processor):
     """Provides a version and dmg download for Composer command line tool."""
@@ -91,10 +91,10 @@ class PHPComposerURLProvider(Processor):
         '''Find the last version number and URL'''
 
         if 'source_url' in self.env:
-        	self.source_url = self.env['source_url']
+            self.source_url = self.env['source_url']
 
         if 'url_pattern' in self.env:
-        	self.url_pattern = self.env['url_pattern']
+            self.url_pattern = self.env['url_pattern']
 
         try:
             all_download_URLs_per_version = self.get_all_download_URLs_per_version()
