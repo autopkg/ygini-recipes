@@ -16,8 +16,10 @@
 """See docstring for MunkiNormalizePath class"""
 
 from __future__ import absolute_import
+
+import re
+
 from autopkglib import Processor
-import re 
 
 __all__ = ["MunkiNormalizePath"]
 

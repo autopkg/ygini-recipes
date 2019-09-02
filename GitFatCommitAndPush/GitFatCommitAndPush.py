@@ -16,10 +16,11 @@
 
 """See docstring for GitFatCommitAndPush class"""
 
-from __future__ import absolute_import
-from __future__ import print_function
-from autopkglib import Processor
+from __future__ import absolute_import, print_function
+
 from subprocess import call
+
+from autopkglib import Processor
 
 #pylint: disable=no-name-in-module
 try:
