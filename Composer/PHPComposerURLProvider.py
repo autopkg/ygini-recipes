@@ -105,7 +105,7 @@ class PHPComposerURLProvider(Processor):
 
             last_version = self.get_highest_version(all_download_URLs_per_version)
             last_version_url = all_download_URLs_per_version[last_version]
-        except Exception as e:
+        except BaseException as e:
             raise ProcessorError("Could not get a download URL: %s" % e)
 
         self.env["version"] = last_version
