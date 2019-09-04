@@ -16,8 +16,11 @@
 
 """See docstring for RunSyncCommand class"""
 
-from autopkglib import Processor
+from __future__ import absolute_import
+
 from subprocess import call
+
+from autopkglib import Processor
 
 __all__ = ["RunSyncCommand"]
 
