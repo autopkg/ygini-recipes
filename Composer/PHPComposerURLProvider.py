@@ -1,13 +1,18 @@
 #!/usr/bin/python
 
-from HTMLParser import HTMLParser
-import re
-import urllib2
-import urlparse
+from __future__ import absolute_import
 
-from distutils.version import LooseVersion, StrictVersion
+import re
+import urlparse
+from distutils.version import LooseVersion
+from HTMLParser import HTMLParser
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["PHPComposerURLProvider"]
 
@@ -17,11 +22,11 @@ class ComposerURLFinder(HTMLParser):
         # Only parse the 'anchor' tag.
         if tag == "a":
            # Check the list of defined attributes.
-           for name, value in attrs:
-               # If href is defined, print it.
-               if name == "href":
-                   self.urls.append(value)
-                   
+            for name, value in attrs:
+                # If href is defined, print it.
+                if name == "href":
+                    self.urls.append(value)
+
 class PHPComposerURLProvider(Processor):
     """Provides a version and dmg download for Composer command line tool."""
     description = __doc__
@@ -55,10 +60,10 @@ class PHPComposerURLProvider(Processor):
     }
 
 
-    def get_all_downlaod_URLs_per_version(self):
+    def get_all_download_URLs_per_version(self):
         '''Return a list of download URLs.'''
         try:
-            html_content = urllib2.urlopen(self.source_url).read()
+            html_content = urlopen(self.source_url).read()
             parser = ComposerURLFinder()
             parser.feed(html_content)
             url_pattern = re.compile(self.url_pattern )
@@ -70,7 +75,7 @@ class PHPComposerURLProvider(Processor):
                     version = m.group(1)
                     download_urls[version] = url
 
-        except urllib2.HTTPError, ValueError:
+        except:
             raise ProcessorError("Could not parse downloads metadata.")
         return download_urls
 
@@ -85,21 +90,21 @@ class PHPComposerURLProvider(Processor):
                     has_changed = True
                     selected_version = a_version
         return selected_version
-        
+
     def main(self):
         '''Find the last version number and URL'''
-            
+
         if 'source_url' in self.env:
-        	self.source_url = self.env['source_url']
-        	
+            self.source_url = self.env['source_url']
+
         if 'url_pattern' in self.env:
-        	self.url_pattern = self.env['url_pattern']
+            self.url_pattern = self.env['url_pattern']
 
         try:
-            all_downlaod_URLs_per_version = self.get_all_downlaod_URLs_per_version()
-        
-            last_version = self.get_highest_version(all_downlaod_URLs_per_version.keys())
-            last_version_url = all_downlaod_URLs_per_version[last_version]
+            all_download_URLs_per_version = self.get_all_download_URLs_per_version()
+
+            last_version = self.get_highest_version(all_download_URLs_per_version)
+            last_version_url = all_download_URLs_per_version[last_version]
         except Exception as e:
             raise ProcessorError("Could not get a download URL: %s" % e)
 

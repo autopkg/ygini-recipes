@@ -15,8 +15,11 @@
 # limitations under the License.
 """See docstring for MunkiNormalizePath class"""
 
+from __future__ import absolute_import
+
+import re
+
 from autopkglib import Processor
-import re 
 
 __all__ = ["MunkiNormalizePath"]
 
@@ -67,7 +70,7 @@ class MunkiNormalizePath(Processor):
         original_subdir = self.env["MUNKI_REPO_SUBDIR"] if "MUNKI_REPO_SUBDIR" in self.env else None
         original_subdir_munki = self.env["repo_subdirectory"] if "repo_subdirectory" in self.env else None
         if original_name:
-            self.env["NAME"] = re.sub('[^0-9a-zA-Z/]+', '_', original_name.lower())
+            self.env["NAME"] = re.sub(r'[^0-9a-zA-Z/]+', '_', original_name.lower())
             self.output("Updated NAME with %s" % self.env["NAME"])
             if original_displayname is None:
                 self.output("No original DISPLAYNAME, adding one")
@@ -78,10 +81,10 @@ class MunkiNormalizePath(Processor):
                     self.env["pkginfo"]["display_name"] = original_name
                     self.output("Updated display_name with %s" % original_name)
         if original_subdir:
-            self.env["MUNKI_REPO_SUBDIR"] = re.sub('[^0-9a-zA-Z/]+', '_', original_subdir.lower())
+            self.env["MUNKI_REPO_SUBDIR"] = re.sub(r'[^0-9a-zA-Z/]+', '_', original_subdir.lower())
             self.output("Updated MUNKI_REPO_SUBDIR with %s" % self.env["MUNKI_REPO_SUBDIR"])
         if original_subdir_munki:
-            self.env["repo_subdirectory"] = re.sub('[^0-9a-zA-Z/]+', '_', original_subdir_munki.lower())
+            self.env["repo_subdirectory"] = re.sub(r'[^0-9a-zA-Z/]+', '_', original_subdir_munki.lower())
             self.output("Updated repo_subdirectory with %s" % self.env["repo_subdirectory"])
 
 if __name__ == "__main__":
