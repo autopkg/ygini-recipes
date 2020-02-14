@@ -24,6 +24,8 @@
             <array>
                 <string>testing</string>
             </array>
+            <key>category</key>
+            <string>%CATEGORY%</string>
             <key>description</key>
             <string>Scientific graphing and nonlinear curve regression tool.</string>
             <key>developer</key>
