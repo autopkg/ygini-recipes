@@ -21,7 +21,7 @@
             <key>Arguments</key>
             <dict>
                 <key>appcast_url</key>
-                <string>https://www.tripmode.ch/app/appcast.xml</string>
+                <string>https://www.tripmode-updates.ch/app/appcast.xml</string>
             </dict>
         </dict>
 		<dict>
