@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of TripMode form tripmode.ch.</string>
+	<string>Downloads the latest version of TripMode 2 form tripmode.ch.</string>
 	<key>Identifier</key>
-	<string>com.github.ygini.download.TripMode</string>
+	<string>com.github.ygini.download.TripMode2</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>TripMode</string>
+		<string>TripMode2</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
