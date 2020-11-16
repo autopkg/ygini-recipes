@@ -3,25 +3,29 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of TripMode form tripmode.ch.</string>
+	<string>Downloads the latest version of TripMode 2 form tripmode.ch.</string>
 	<key>Identifier</key>
-	<string>com.github.ygini.download.TripMode</string>
+	<string>com.github.ygini.download.TripMode2</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>TripMode</string>
+		<string>TripMode2</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
 	<key>Process</key>
 	<array>
-	    <dict>
+        <dict>
             <key>Processor</key>
-            <string>SparkleUpdateInfoProvider</string>
+            <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
-                <key>appcast_url</key>
-                <string>https://www.tripmode-updates.ch/app/appcast.xml</string>
+                <key>url</key>
+                <string>https://tripmode.ch/thank-you-for-downloading-tripmode</string>
+                <key>result_output_var_name</key>
+                <string>url</string>
+                <key>re_pattern</key>
+                <string>https://tripmode-updates.ch/app/TripMode-2.*app\.dmg</string>
             </dict>
         </dict>
 		<dict>

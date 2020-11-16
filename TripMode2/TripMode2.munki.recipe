@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of TripMode form tripmode.ch and import it into Munki.</string>
+	<string>Downloads the latest version of TripMode 2 form tripmode.ch and import it into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.ygini.munki.TripMode</string>
+	<string>com.github.ygini.munki.TripMode2</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
-		<string>TripMode</string>
+		<string>TripMode2</string>
 		<key>MUNKI_CATALOG</key>
 		<string>testing</string>
 		<key>pkginfo</key>
@@ -25,7 +25,9 @@
 			<key>developer</key>
 			<string>TripMode</string>
 			<key>display_name</key>
-			<string>TripMode</string>
+			<string>TripMode 2</string>
+			<key>maximum_os_version</key>
+			<string>10.15.99</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -35,7 +37,7 @@
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.ygini.download.TripMode</string>
+	<string>com.github.ygini.download.TripMode2</string>
 	<key>Process</key>
 	<array>
 		<dict>
