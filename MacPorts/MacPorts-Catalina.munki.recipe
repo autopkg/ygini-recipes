@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Import MacPorts in Munki</string>
 	<key>Identifier</key>
-	<string>com.github.ygini.munki.macports-mojave</string>
+	<string>com.github.ygini.munki.macports-catalina</string>
 	<key>Input</key>
 	<dict>
 		<key>MACPORTS_REQUESTED_OS</key>
