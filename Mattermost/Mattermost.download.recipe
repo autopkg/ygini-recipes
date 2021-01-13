@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Mattermost.</string> 
+	<key>Identifier</key>
+	<string>com.github.ygini.download.Mattermost</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Mattermost</string>
+		
+<!--SELECT YOUR OS VERSION AND INPUT BELOW
+	"mac" for MAC OS X
+	"win" for WINDOWS EXE
+	"x64" for WINDOWS 64 BIT MSI
+	"x32" for WINDOWS 32 BIT MSI
+	"linux-ia32" for LINUX 32 BIT
+	"linux-x64" for LINUX 64 BIT
+-->
+
+		<key>os</key>
+		<string>mac</string><!-- <<<<<< INPUT HERE <<<<<< -->
+	</dict>
+	<key>MinimumVersion</key>
+    <string>0.6.1</string>
+	<key>Process</key>
+	<array>
+        <dict>
+                <key>Arguments</key>
+                <dict>
+                        <key>github_repo</key>
+                        <string>mattermost/desktop</string>
+                        <key>asset_regex</key>
+                        <string>mattermost-desktop-[0-9.]+-%os%.dmg</string>
+                </dict>
+                        <key>Processor</key>
+                        <string>GitHubReleasesInfoProvider</string>
+        </dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
