@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Download Terminus and publish it into Munki</string>
+    <string>Download Termius and publish it into Munki</string>
     <key>Identifier</key>
-    <string>com.github.ygini.munki.terminus</string>
+    <string>com.github.ygini.munki.termius</string>
     <key>MinimumVersion</key>
     <string>0.4.2</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>terminus</string>
+        <string>termius</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>it</string>
         <key>pkginfo</key>
@@ -31,11 +31,11 @@
 			<key>description</key>
 			<string>Termius is a portable server management system that works for you in any situation.</string>
 			<key>display_name</key>
-			<string>Terminus</string>
+			<string>Termius</string>
         </dict>
     </dict>
     <key>ParentRecipe</key>
-    <string>com.github.ygini.download.terminus</string>
+    <string>com.github.ygini.download.termius</string>
     <key>Process</key>
     <array>
         <dict>
