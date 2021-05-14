@@ -54,6 +54,24 @@
 	<string>com.github.hansen-m.download.Anaconda</string>
 	<key>Process</key>
 	<array>
+	    <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>This recipe has been replaced by: https://github.com/autopkg/dataJAR-recipes/blob/master/Anaconda%203/Anaconda3.munki.recipe. Please use the recipes in te dataJAR-recipes repo instead.</string>
+            </dict>
+        </dict>
+        <dict>   
+            <key>Processor</key>   
+            <string>StopProcessingIf</string>   
+            <key>Arguments</key>   
+            <dict>   
+                <key>predicate</key>   
+                <string>TRUEPREDICATE</string>
+            </dict>
+        </dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
