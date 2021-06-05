@@ -84,6 +84,18 @@
 			<key>Processor</key>
 			<string>Versioner</string>
 		</dict>
+                <dict>
+                        <key>Arguments</key>
+                                <dict>
+                                        <key>additional_pkginfo</key>
+                                        <dict>
+                                                <key>version</key>
+                                                <string>%version%</string>
+                                        </dict>
+                                </dict>
+                        <key>Processor</key>
+                        <string>MunkiPkginfoMerger</string>
+                </dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
