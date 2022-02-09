@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Download recipe for Arm Forge.</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.download.armforge</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>SmartGit</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.3.1</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://developer.arm.com/tools-and-software/server-and-hpc/downloads/arm-forge</string>
+                <key>re_pattern</key>      
+                <string>https://content.allinea.com/downloads/arm-forge-client-(?P&lt;url_version_number&gt;.*?)-macos-x86_64\.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://content.allinea.com/downloads/arm-forge-client-%url_version_number%-macos-x86_64.dmg</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
