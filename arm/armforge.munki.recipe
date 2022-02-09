@@ -42,6 +42,18 @@
     <string>com.github.ygini.download.armforge</string>
     <key>Process</key>
     <array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%url_version_number%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
         <dict>
             <key>Arguments</key>
             <dict>
