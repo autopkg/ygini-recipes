@@ -33,7 +33,7 @@
                         <key>github_repo</key>
                         <string>mattermost/desktop</string>
                         <key>asset_regex</key>
-                        <string>mattermost-desktop-[0-9.]+-%os%.dmg</string>
+                        <string>mattermost-desktop-[0-9.]+-%os%-universal.dmg</string>
                 </dict>
                         <key>Processor</key>
                         <string>GitHubReleasesInfoProvider</string>
