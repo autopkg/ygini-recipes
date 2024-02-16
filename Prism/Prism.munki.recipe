@@ -3,15 +3,19 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest version of GraphPad Prism and imports it into Munki.</string>
+    <string>Downloads the latest version of GraphPad Prism and imports it into Munki.
+
+Set the DERIVE_MIN_OS variable to a non-empty string to set the minimum_os_version via MunkiInstallsItemsCreator. This requires a minimum AutoPkg version of 2.7 please update if you're not already running it.</string>
     <key>Identifier</key>
     <string>com.github.ygini.munki.Prism</string>
     <key>Input</key>
     <dict>
         <key>MAJOR_VERSION</key>
-        <string>7</string>
+        <string>9</string>
         <key>APP_FILENAME</key>
         <string>Prism %MAJOR_VERSION%</string>
+        <key>DERIVE_MIN_OS</key>
+        <string>YES</string>
         <key>CATEGORY</key>
         <string>Scientific Software</string>
         <key>NAME</key>
@@ -39,11 +43,30 @@
         </dict>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.6.1</string>
+    <string>2.7</string>
     <key>ParentRecipe</key>
     <string>com.github.rtrouton.pkg.Prism</string>
     <key>Process</key>
     <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>faux_root</key>
+                <string>%RECIPE_CACHE_DIR%/Prism</string>
+                <key>derive_minimum_os_version</key>
+                <string>%DERIVE_MIN_OS%</string>
+                <key>installs_item_paths</key>
+                <array>
+                    <string>/Applications/Prism %MAJOR_VERSION%.app</string>
+                </array>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiInstallsItemsCreator</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
         <dict>
             <key>Arguments</key>
             <dict>
