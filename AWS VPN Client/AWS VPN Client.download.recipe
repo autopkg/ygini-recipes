@@ -2,51 +2,60 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Comment</key>
-	<string>Created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)</string>
-	<key>Description</key>
-	<string>Downloads the latest version of AWS VPN Client.</string>
-	<key>Identifier</key>
-	<string>com.github.ygini.download.AWSVPNClient</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>AWS VPN Client</string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>1.0.0</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%.pkg</string>
-				<key>url</key>
-				<string>https://d20adtppz83p9s.cloudfront.net/OSX/latest/AWS_VPN_Client.pkg</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Installer: AMZN Mobile LLC (94KV3E626L)</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
-				<key>input_path</key>
-				<string>%pathname%</string>
-			</dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-		</dict>
-	</array>
+    <key>Description</key>
+    <string>Downloads the latest version of AWS VPN Client.</string>
+    <key>Identifier</key>
+    <string>com.github.ygini.download.AWSVPNClient</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>AWS VPN Client</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://docs.aws.amazon.com/vpn/latest/clientvpn-user/client-vpn-connect-macos-release-notes.html</string>
+                <key>re_pattern</key>
+                <string>https://.*?\.cloudfront\.net/OSX/.*?/AWS_VPN_Client\.pkg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>filename</key>
+                <string>%NAME%.pkg</string>
+                <key>url</key>
+                <string>%match%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Developer ID Installer: AMZN Mobile LLC (94KV3E626L)</string>
+                    <string>Developer ID Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
+                <key>input_path</key>
+                <string>%pathname%</string>
+            </dict>
+        </dict>
+    </array>
 </dict>
 </plist>
