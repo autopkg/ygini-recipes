@@ -3,7 +3,12 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest version of Elasticsearch.</string>
+    <string>Downloads the latest version of Elasticsearch.
+    
+Valid values for ARCH include:
+- "x86_64" (default, Intel)
+- "aarch64" (Apple Silicon)
+</string>
     <key>Identifier</key>
     <string>com.github.ygini.download.Elasticsearch</string>
     <key>Input</key>
