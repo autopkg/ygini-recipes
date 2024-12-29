@@ -3,13 +3,20 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Download recipe for SmartGit.</string>
+    <string>Download recipe for SmartGit.
+    
+Valid values for ARCH include:
+- "x86_64" (default, Intel)
+- "aarch64" (Apple Silicon)
+</string>
     <key>Identifier</key>
     <string>com.github.ygini.download.SmartGit</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>SmartGit</string>
+        <key>ARCH</key>
+        <string>x86_64</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.3.1</string>
@@ -23,14 +30,14 @@
                 <key>url</key>
                 <string>https://www.syntevo.com/smartgit/download/</string>
                 <key>re_pattern</key>      
-                <string>/downloads/smartgit/smartgit-macosx-(?P&lt;url_version_number&gt;.*?)\.dmg</string>
+                <string>/downloads/smartgit/smartgit-%ARCH%-(?P&lt;url_version_number&gt;.*?)\.dmg</string>
             </dict>
         </dict>
         <dict>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>https://www.syntevo.com/downloads/smartgit/smartgit-macosx-%url_version_number%.dmg</string>
+                <string>https://downloads.syntevo.com/downloads/smartgit/smartgit-%ARCH%-%url_version_number%.dmg</string>
             </dict>
             <key>Processor</key>
             <string>URLDownloader</string>
