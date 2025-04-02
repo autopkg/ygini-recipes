@@ -43,7 +43,7 @@
                 <key>source_path</key>
                 <string>%pathname%</string>
                 <key>destination_path</key>
-                <string>%pkgroot%/usr/local/bin/</string>
+                <string>%pkgroot%/usr/local/bin/composer</string>
             </dict>
         </dict>
         <dict>
@@ -75,7 +75,7 @@
     					</dict>
     					<dict>
     						<key>path</key>
-                    		<string>/usr/local/bin/%NAME%.phar</string>
+                    		<string>/usr/local/bin/composer</string>
     						<key>user</key>
                     		<string>root</string>
     						<key>group</key>
