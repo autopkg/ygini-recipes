@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Created with Recipe Robot v1.0.1 (https://github.com/homebysix/recipe-robot)</string>
+	<string>Created with Recipe Robot v2.3.1 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
 	<string>Downloads the latest version of Elgato Video Capture.</string>
 	<key>Identifier</key>
@@ -14,23 +14,32 @@
 		<string>Elgato Video Capture</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.5.0</string>
+	<string>2.3</string>
 	<key>Process</key>
 	<array>
-	    <dict>
-            <key>Processor</key>
-            <string>SparkleUpdateInfoProvider</string>
-            <key>Arguments</key>
-            <dict>
-                <key>appcast_url</key>
-                <string>http://updates.elgato.com/autoupdate/videoCapture.rss</string>
-            </dict>
-        </dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>href="(https://edge\.elgato\.com/video-capture/macos/[\d\.]+/Video_Capture_(?P&lt;version&gt;[\d\.]+)\.zip)"</string>
+				<key>result_output_var_name</key>
+				<string>url</string>
+				<key>url</key>
+				<string>https://help.elgato.com/hc/en-us/articles/360028243991-Elgato-Video-Capture-Software-Release-Notes</string>
+				<key>request_headers</key>
+				<dict>
+					<key>User-Agent</key>
+					<string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%.dmg</string>
+				<string>%NAME%-%version%.zip</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -40,21 +49,39 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>http://updates.elgato.com/autoupdate/videoCapture.rss</string>
-				<key>result_output_var_name</key>
-				<string>version</string>
-				<key>re_pattern</key>
-				<string>Elgato Video Capture (\d\.\d\.\d)</string>
-				<key>re_flags</key>
-				<array>
-					<string>IGNORECASE</string>
-				</array>
+				<key>archive_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Elgato Video Capture.app</string>
+				<key>requirement</key>
+				<string>anchor apple generic and identifier "com.elgato.VideoCapture" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y93VXCB8Q5)</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Elgato Video Capture.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 	</array>
 </dict>
