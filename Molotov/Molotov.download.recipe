@@ -23,14 +23,14 @@
                 <key>url</key>
                 <string>https://www.molotov.tv/app/mac/latest?version=v1</string>
                 <key>re_pattern</key>      
-                <string>http://desktop-auto-upgrade\.molotov\.tv/mac/Molotov-v(?P&lt;url_version_number&gt;.*?)-mac\.zip</string>
+                <string>https://desktop-auto-upgrade\.molotov\.tv/mac/Molotov-(?P&lt;url_version_number&gt;.*?)-mac\.zip</string>
             </dict>
         </dict>
         <dict>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://desktop-auto-upgrade.molotov.tv/mac/Molotov-v%url_version_number%-mac.zip</string>
+                <string>https://desktop-auto-upgrade.molotov.tv/mac/Molotov-%url_version_number%-mac.zip</string>
             </dict>
             <key>Processor</key>
             <string>URLDownloader</string>
@@ -38,6 +38,21 @@
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/Molotov.app</string>
+                <key>requirement</key>
+                <string>identifier "tv.molotov.MolotovDesktopApp" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = S7HY56XG6J</string>
+            </dict>
         </dict>
     </array>
 </dict>
